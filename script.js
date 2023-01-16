@@ -8,7 +8,7 @@ const plusButton = document.getElementById("plus-button");
 const minusButton = document.getElementById("minus-button");
 // let minutes = Number(displayMinutes.textContent);
 // let seconds = Number(displaySeconds.textContent);
-let newMinutes = 2;
+let newMinutes = 0;
 let cards = document.querySelectorAll(".sound-selector button");
 let forestCard = document.querySelector(".forest-card");
 const rainCard = document.querySelector(".rain-card");
@@ -41,8 +41,6 @@ const handleCardClick = (e) => {
 const updateTimerDisplay = (nwMinutes, seconds) => {
   displayMinutes.textContent = String(nwMinutes).padStart(2, "0");
   displaySeconds.textContent = String(seconds).padStart(2, "0");
-  console.log('newMinutes',newMinutes);
-  console.log('nwMinutes', nwMinutes);
   newMinutes = nwMinutes;
 };
 
@@ -126,9 +124,15 @@ pauseButton.addEventListener("click", handlePauseClick);
 setButton.addEventListener("click", handleSetClick);
 stopButton.addEventListener("click", handleStopClick);
 plusButton.onclick = () =>
-  handlePlusClick(Number(displayMinutes.textContent), Number(displaySeconds.textContent));
+  handlePlusClick(
+    Number(displayMinutes.textContent),
+    Number(displaySeconds.textContent)
+  );
 minusButton.onclick = () =>
-  handleMinusClick(Number(displayMinutes.textContent), Number(displaySeconds.textContent));
+  handleMinusClick(
+    Number(displayMinutes.textContent),
+    Number(displaySeconds.textContent)
+  );
 
 //eventos sound selector
 
