@@ -8,8 +8,7 @@ const plusButton = document.getElementById("plus-button");
 const minusButton = document.getElementById("minus-button");
 // let minutes = Number(displayMinutes.textContent);
 // let seconds = Number(displaySeconds.textContent);
-let newMinutes;
-
+let newMinutes = 2;
 let cards = document.querySelectorAll(".sound-selector button");
 let forestCard = document.querySelector(".forest-card");
 const rainCard = document.querySelector(".rain-card");
@@ -39,9 +38,12 @@ const handleCardClick = (e) => {
 
 //funçoes timer
 
-const updateTimerDisplay = (newMinutes, seconds) => {
-  displayMinutes.textContent = String(newMinutes).padStart(2, "0");
+const updateTimerDisplay = (nwMinutes, seconds) => {
+  displayMinutes.textContent = String(nwMinutes).padStart(2, "0");
   displaySeconds.textContent = String(seconds).padStart(2, "0");
+  console.log('newMinutes',newMinutes);
+  console.log('nwMinutes', nwMinutes);
+  newMinutes = nwMinutes;
 };
 
 const resetControls = () => {
@@ -67,10 +69,6 @@ const handlePauseClick = () => {
 
 const handleSetClick = () => {
   newMinutes = prompt("Quantos minutos?") || 0;
-
-  newMinutes = newMinutes === undefined ? 0 : newMinutes;
-  seconds = seconds === undefined ? 0 : seconds;
-
   updateTimerDisplay(newMinutes, 0);
 };
 
@@ -105,23 +103,19 @@ const resetTimer = () => {
 };
 
 const countdown = () => {
-  minutes = Number(displayMinutes.textContent);
-  seconds = Number(displaySeconds.textContent);
   countdownTimeOut = setTimeout(function () {
-    if (minutes <= 0 && seconds <= 0) {
+    minutes = Number(displayMinutes.textContent);
+    seconds = Number(displaySeconds.textContent);
+    if (minutes <= 0 && seconds < 1) {
       resetControls();
-      updateTimerDisplay(newMinutes, seconds);
-      clearTimeout(countdownTimeOut);
+      updateTimerDisplay(newMinutes, 0);
       return;
     }
-
     if (seconds <= 0) {
       seconds = 3;
       --minutes;
     }
-
     updateTimerDisplay(minutes, seconds - 1);
-
     countdown();
   }, 1000);
 };
@@ -132,9 +126,9 @@ pauseButton.addEventListener("click", handlePauseClick);
 setButton.addEventListener("click", handleSetClick);
 stopButton.addEventListener("click", handleStopClick);
 plusButton.onclick = () =>
-  handlePlusClick(Number(displayMinutes.textContent), seconds);
+  handlePlusClick(Number(displayMinutes.textContent), Number(displaySeconds.textContent));
 minusButton.onclick = () =>
-  handleMinusClick(Number(displayMinutes.textContent), seconds);
+  handleMinusClick(Number(displayMinutes.textContent), Number(displaySeconds.textContent));
 
 //eventos sound selector
 
