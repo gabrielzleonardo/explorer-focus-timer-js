@@ -110,7 +110,7 @@ const countdown = () => {
       return;
     }
     if (seconds <= 0) {
-      seconds = 3;
+      seconds = 60;
       --minutes;
     }
     updateTimerDisplay(minutes, seconds - 1);
