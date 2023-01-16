@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Timer para aplicar método de Pomodoro</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap" rel="stylesheet">
+  <link rel="shortcut icon" href="./assets/favicon.svg" type="image/x-icon">
+  <link rel="stylesheet" href="style.css">
+
+  <script src="./script.js" defer></script>
+
+</head>
+
+<body>
+  <div class="container">
+    <main>
+      <div class="timer">
+        <div id="timer-display">
+          <div id="display-minutes">02</div>
+          <div>:</div>
+          <div id="display-seconds">00</div>
+        </div>
+        <div class="controls">
+          <button id="play-button">
+            <img src="./assets/control-icons/play.svg" alt="botão para iniciar o cronômetro">
+          </button>
+          <button id="pause-button" class="hide">
+            <img src="./assets/control-icons/pause.svg" alt="botão para iniciar o cronômetro">
+          </button>
+          <button id="set-button">
+            <img src="./assets/control-icons/stopwatch.svg" alt="botão para iniciar o cronômetro">
+          </button>
+          <button id="stop-button" class="hide">
+            <img src="./assets/control-icons/stop.svg" alt="botão para iniciar o cronômetro">
+          </button>
+          <button id="plus-button">
+            <img src="./assets/control-icons/plus.svg" alt="botão para iniciar o cronômetro">
+          </button>
+          <button id="minus-button">
+            <img src="./assets/control-icons/minus.svg" alt="botão para iniciar o cronômetro">
+          </button>
+        </div>
+    </main>
+
+    <section class="sound-selector">
+      <button class="forest-card"></button>
+      <button class="rain-card"></button>
+      <button class="coffee-card"></button>
+      <button class="fire-card"></button>
+    </section>
+  </div>
+  </div>
+
+</body>
+
+</html>
