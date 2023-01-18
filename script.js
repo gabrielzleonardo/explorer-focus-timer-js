@@ -1,14 +1,19 @@
+import Sounds from "./components/Sounds.js";
+
 let displayMinutes = document.getElementById("display-minutes");
 let displaySeconds = document.getElementById("display-seconds");
+let minutes = Number(displayMinutes.textContent);
+let seconds = Number(displaySeconds.textContent);
+let countdownTimeOut;
+let newMinutes = 0;
 const playButton = document.getElementById("play-button");
 const pauseButton = document.getElementById("pause-button");
 const setButton = document.getElementById("set-button");
 const stopButton = document.getElementById("stop-button");
 const plusButton = document.getElementById("plus-button");
 const minusButton = document.getElementById("minus-button");
-// let minutes = Number(displayMinutes.textContent);
-// let seconds = Number(displaySeconds.textContent);
-let newMinutes = 0;
+const stopMusicButton = document.querySelector(".stop-music");
+
 let cards = document.querySelectorAll(".sound-selector button");
 let forestCard = document.querySelector(".forest-card");
 const rainCard = document.querySelector(".rain-card");
@@ -16,18 +21,18 @@ const coffeeCard = document.querySelector(".coffee-card");
 const fireCard = document.querySelector(".fire-card");
 
 //funçoes seletor de som
+const clearCards = () => {
+    for (const card of cards) {
+      card.classList.remove("active");
+    }
+}
 
 const setActiveButton = (e) => {
   let currentCard = e.target;
 
-  if (currentCard.classList.contains("active")) {
-    currentCard.classList.remove("active");
-    return;
-  }
+  Sounds.stopAll();
 
-  for (const card of cards) {
-    card.classList.remove("active");
-  }
+  clearCards()
 
   currentCard.classList.add("active");
 };
@@ -41,7 +46,6 @@ const handleCardClick = (e) => {
 const updateTimerDisplay = (nwMinutes, seconds) => {
   displayMinutes.textContent = String(nwMinutes).padStart(2, "0");
   displaySeconds.textContent = String(seconds).padStart(2, "0");
-  newMinutes = nwMinutes;
 };
 
 const resetControls = () => {
@@ -72,7 +76,8 @@ const handleSetClick = () => {
 
 const handleStopClick = () => {
   resetControls();
-  resetTimer();
+  updateTimerDisplay(newMinutes, 0);
+  clearTimeout(countdownTimeOut);
 };
 
 const handlePlusClick = (minutes, seconds) => {
@@ -93,11 +98,6 @@ const handleMinusClick = (minutes, seconds) => {
   } else {
     updateTimerDisplay(0, 0);
   }
-};
-
-const resetTimer = () => {
-  clearTimeout(countdownTimeOut);
-  updateTimerDisplay(newMinutes, 0);
 };
 
 const countdown = () => {
@@ -136,7 +136,25 @@ minusButton.onclick = () =>
 
 //eventos sound selector
 
-forestCard.onclick = (e) => setActiveButton(e);
-rainCard.onclick = (e) => setActiveButton(e);
-fireCard.onclick = (e) => setActiveButton(e);
-coffeeCard.onclick = (e) => setActiveButton(e);
+forestCard.onclick = (e) => {
+  handleCardClick(e);
+  Sounds.playForestAudio();
+};
+rainCard.onclick = (e) => {
+  handleCardClick(e);
+  Sounds.playRainAudio();
+};
+fireCard.onclick = (e) => {
+  handleCardClick(e);
+  Sounds.playFireAudio();
+};
+coffeeCard.onclick = (e) => {
+  handleCardClick(e);
+  Sounds.playCoffeeAudio();
+};
+
+stopMusicButton.onclick = (e) => {
+  Sounds.stopAll();
+  clearCards()
+
+};
