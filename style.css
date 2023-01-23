@@ -61,7 +61,6 @@ main {
   flex-direction: column;
   gap: 1.7rem;
 
-  /* margin-right: 19rem; */
   max-width: 320px;
   width: 100%;
 }
