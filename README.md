@@ -1,5 +1,5 @@
 
-#  SPA Universe
+#  FocusTimer
 Esse projeto um desafio proposto no curso Explorer da [RocketSeat](https://app.rocketseat.com.br/). A aplicação consiste em um timer para aplicar o [método de Pomodoro](https://brasilescola.uol.com.br/dicas-de-estudo/tecnica-pomodoro-que-e-e-como-funciona.htm).
 
 
