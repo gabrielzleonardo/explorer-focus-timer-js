@@ -34,6 +34,7 @@ const setActiveButton = (e) => {
 
   clearCards()
 
+
   currentCard.classList.add("active");
 };
 
