@@ -5,7 +5,7 @@ let displaySeconds = document.getElementById("display-seconds");
 let minutes = Number(displayMinutes.textContent);
 let seconds = Number(displaySeconds.textContent);
 let countdownTimeOut;
-let newMinutes = 0;
+let newMinutes = 25;
 const playButton = document.getElementById("play-button");
 const pauseButton = document.getElementById("pause-button");
 const setButton = document.getElementById("set-button");
