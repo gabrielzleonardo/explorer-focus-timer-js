@@ -20,8 +20,6 @@ const rainCard = document.querySelector(".rain-card");
 const coffeeCard = document.querySelector(".coffee-card");
 const fireCard = document.querySelector(".fire-card");
 
-console.log(cards)
-
 //funçoes seletor de som
 const clearCards = () => {
   for (const card of cards) {
