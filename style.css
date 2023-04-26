@@ -33,10 +33,10 @@ button {
 }
 
 .stop-music:active {
-  transform: scale(.9);
+  transform: scale(0.9);
 }
 
-.stop-music img{
+.stop-music img {
   width: 4.8rem;
   height: 4.8rem;
 }

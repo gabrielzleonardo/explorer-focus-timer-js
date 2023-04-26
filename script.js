@@ -20,20 +20,21 @@ const rainCard = document.querySelector(".rain-card");
 const coffeeCard = document.querySelector(".coffee-card");
 const fireCard = document.querySelector(".fire-card");
 
+console.log(cards)
+
 //funçoes seletor de som
 const clearCards = () => {
-    for (const card of cards) {
-      card.classList.remove("active");
-    }
-}
+  for (const card of cards) {
+    card.classList.remove("active");
+  }
+};
 
 const setActiveButton = (e) => {
   let currentCard = e.target;
 
   Sounds.stopAll();
 
-  clearCards()
-
+  clearCards();
 
   currentCard.classList.add("active");
 };
@@ -61,6 +62,7 @@ const handlePlayClick = () => {
   pauseButton.classList.remove("hide");
   setButton.classList.add("hide");
   stopButton.classList.remove("hide");
+  plusButton.toggleAttribute("disabled");
   countdown();
 };
 
@@ -68,6 +70,7 @@ const handlePauseClick = () => {
   playButton.classList.remove("hide");
   pauseButton.classList.add("hide");
   clearTimeout(countdownTimeOut);
+  plusButton.toggleAttribute("disabled");
 };
 
 const handleSetClick = () => {
@@ -141,14 +144,17 @@ forestCard.onclick = (e) => {
   handleCardClick(e);
   Sounds.playForestAudio();
 };
+
 rainCard.onclick = (e) => {
   handleCardClick(e);
   Sounds.playRainAudio();
 };
+
 fireCard.onclick = (e) => {
   handleCardClick(e);
   Sounds.playFireAudio();
 };
+
 coffeeCard.onclick = (e) => {
   handleCardClick(e);
   Sounds.playCoffeeAudio();
@@ -156,6 +162,5 @@ coffeeCard.onclick = (e) => {
 
 stopMusicButton.onclick = (e) => {
   Sounds.stopAll();
-  clearCards()
-
+  clearCards();
 };
